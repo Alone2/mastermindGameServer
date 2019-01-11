@@ -5,11 +5,10 @@ import mastermind
 
 def main():
     arguments = cgi.FieldStorage()
-    if not ("connection_id" in arguments and "colors" in arguments):
+    if not ("connection_id" in arguments and "colors" in arguments and "tries" in arguments):
         return "error"
 
-    #geht vlt. einfacher wenn connection.combination = colors
-    mastermind.pins.save(int(arguments["connection_id"]), arguments["colors"])
+    mastermind.pins.save(int(arguments["connection_id"]), arguments["colors"], int(arguments["tries"]))
 
     return "received"
 

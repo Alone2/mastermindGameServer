@@ -13,8 +13,11 @@ def main():
 
         ids_to_connect = mastermind.filestuff.getIdsToConnect(bool(isGuesser))
         return json.dumps(ids_to_connect)
-    c = mastermind.connection().get(int(arguments["connection_id"]))
-    info = {"isOver":c.isOver,"won":c.won,"ready":not c.isConnectable}
+    c = mastermind.connection()
+    c.get(int(arguments["connection_id"]))
+    info = {"isOver":c.isOver,"won":c.won,"ready": not c.isConnectable, "user_combinations":c.user_combinations}
+    if c.isOver:
+        c.delete()
     return json.dumps(info)
 
 if __name__ == "__main__":
