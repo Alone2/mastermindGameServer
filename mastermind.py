@@ -58,10 +58,12 @@ class pins():
         """if gewonnen:
             c.won = True
             c.isOver = True
+            c.save()
             return cor"""
         if c.user_tries >= c.tries:
             c.won = False
             c.isOver = True  
+            c.save()
             return cor  
         return cor
 
