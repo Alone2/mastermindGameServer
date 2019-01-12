@@ -14,4 +14,4 @@ def main():
 
 if __name__ == "__main__":
     # Beim Starten wird die Funktion main ausgeführt
-    main()
+    print(main())
