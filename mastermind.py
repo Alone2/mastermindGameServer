@@ -1,6 +1,6 @@
 import json
 import random
-PATH = "./texts/index.json"
+
 class filestuff():
     @staticmethod
     def getIdsToConnect(isGuesser):
@@ -145,4 +145,4 @@ class connection():
 
         return int(new_id)
 
-    
+PATH = filestuff.getJson("config.json")["data_path"]

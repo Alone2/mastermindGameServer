@@ -107,3 +107,4 @@ venv.bak/
 texts/
 files.json
 noError.py
+config.json
