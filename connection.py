@@ -15,6 +15,7 @@ def main():
     
     c = mastermind.connection()
     c.new(arguments["name"], bool(arguments["isGuesser"]))
+    c.save()
     return c.id
 
 if __name__ == "__main__":
