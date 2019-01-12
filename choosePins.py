@@ -8,7 +8,11 @@ def main():
     if not ("connection_id" in arguments and "colors" in arguments and "tries" in arguments):
         return "error"
 
-    mastermind.pins.save(int(arguments["connection_id"]), arguments["colors"], int(arguments["tries"]))
+    c_id = int(arguments["connection_id"].value)
+    colors = arguments["colors"].value
+    tries = int(arguments["tries"].value)
+
+    mastermind.pins.save(c_id, colors, tries)
 
     return "received"
 

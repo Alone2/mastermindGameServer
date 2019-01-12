@@ -11,11 +11,16 @@ def main():
         if not  ("id_to_connect" in arguments):
             return "error"
         c = mastermind.connection()
-        return c.newPlayer(int(arguments["id_to_connect"]), bool(arguments["isGuesser"]))
+        c_id2c = int(arguments["id_to_connect"].value)
+        isGuesser = bool(arguments["isGuesser"].value)
+        return c.newPlayer(c_id2c, isGuesser)
     
     c = mastermind.connection()
-    c.new(arguments["name"], bool(arguments["isGuesser"]))
+    name = arguments["name"].value
+    isGuesser = bool(arguments["isGuesser"].value)
+    c.new(name, isGuesser)
     c.save()
+
     return c.id
 
 if __name__ == "__main__":

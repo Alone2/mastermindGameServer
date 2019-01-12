@@ -8,8 +8,11 @@ def main():
     arguments = cgi.FieldStorage()
     if not ("connection_id" in arguments and "colors" in arguments):
         return "error"
+    
+    c_id = int(arguments["connection_id"].value)
+    colors = arguments["colors"].value
+    guess = mastermind.pins.guess(c_id, colors)
 
-    guess = mastermind.pins.guess(int(arguments["connection_id"]), arguments["colors"])
     return json.dumps(guess)
 
 if __name__ == "__main__":

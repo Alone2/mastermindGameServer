@@ -9,13 +9,16 @@ def main():
     if not "connection_id" in arguments:
         if not "isGuesser" in arguments:
             return "error"
-        isGuesser = arguments["isGuesser"]
+        isGuesser = bool(arguments["isGuesser"].value)
 
-        ids_to_connect = mastermind.filestuff.getIdsToConnect(bool(isGuesser))
+        ids_to_connect = mastermind.filestuff.getIdsToConnect(isGuesser)
         return json.dumps(ids_to_connect)
+
     c = mastermind.connection()
-    c.get(int(arguments["connection_id"]))
+    c_id = int(arguments["connection_id"].value)
+    c.get(c_id)
     info = {"isOver":c.isOver,"won":c.won,"ready": not c.isConnectable, "user_combinations":c.user_combinations}
+
     if c.isOver:
         c.delete()
     return json.dumps(info)
