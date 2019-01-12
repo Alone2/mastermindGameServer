@@ -13,7 +13,9 @@ def main():
         c = mastermind.connection()
         c_id2c = int(arguments["id_to_connect"].value)
         isGuesser = arguments["isGuesser"].value in ["True", "true", "1"]
-        return c.newPlayer(c_id2c, isGuesser)
+        dat = c.newPlayer(c_id2c, isGuesser)
+        c.save()
+        return dat
     
     c = mastermind.connection()
     name = arguments["name"].value
