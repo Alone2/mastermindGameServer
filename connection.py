@@ -12,12 +12,12 @@ def main():
             return "error"
         c = mastermind.connection()
         c_id2c = int(arguments["id_to_connect"].value)
-        isGuesser = bool(arguments["isGuesser"].value)
+        isGuesser = arguments["isGuesser"].value in ["True", "true", "1"]
         return c.newPlayer(c_id2c, isGuesser)
     
     c = mastermind.connection()
     name = arguments["name"].value
-    isGuesser = bool(arguments["isGuesser"].value)
+    isGuesser = arguments["isGuesser"].value in ["True", "true", "1"]
     c.new(name, isGuesser)
     c.save()
 

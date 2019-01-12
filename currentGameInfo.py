@@ -9,7 +9,7 @@ def main():
     if not "connection_id" in arguments:
         if not "isGuesser" in arguments:
             return "error"
-        isGuesser = bool(arguments["isGuesser"].value)
+        isGuesser = arguments["isGuesser"].value in ["True", "true", "1"]
 
         ids_to_connect = mastermind.filestuff.getIdsToConnect(isGuesser)
         return json.dumps(ids_to_connect)
