@@ -59,6 +59,7 @@ class pins():
         # TO-DO: TEST IF CORRECT
 
         cor = {"correct":correct, "correctColor":correctC}
+        c.correct_combinations.append(cor)
 
         if correct >= len(my_colors):
             #Chooser lost
@@ -84,6 +85,7 @@ class connection():
         self.user_tries = 0
         self.combination = []
         self.user_combinations = []
+        self.correct_combinations = []
     
     def new(self, name, isGuesser):
         self.name = name
@@ -105,6 +107,7 @@ class connection():
         self.user_tries = data_myid["user_tries"]
         self.combination = data_myid["combination"]
         self.user_combinations = data_myid["user_combinations"]
+        self.correct_combinations = data_myid["correct_combinations"]
     
     def newPlayer(self, id_to_connect, isGuesser):
         new_id = filestuff.getId(id_to_connect)
@@ -130,7 +133,8 @@ class connection():
             "tries":self.tries,
             "combination":self.combination,
             "user_combinations":self.user_combinations,
-            "user_tries":self.user_tries
+            "user_tries":self.user_tries,
+            "correct_combinations":self.correct_combinations
         }
         filestuff.saveJson(PATH, data)
 
