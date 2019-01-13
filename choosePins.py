@@ -12,9 +12,7 @@ def main():
     colors = arguments["colors"].value
     tries = int(arguments["tries"].value)
 
-    mastermind.pins.save(c_id, colors, tries)
-
-    return "received"
+    return mastermind.pins.save(c_id, colors, tries)
 
 if __name__ == "__main__":
     # Beim Starten wird die Funktion main ausgeführt

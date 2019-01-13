@@ -42,10 +42,14 @@ class pins():
     def save(connection_id, colors, tries):
         c = connection()
         c.get(connection_id)
+        if c.isGuessable:
+            return "error"
+        c.isGuessable = True
         c.tries = tries
         c.combination = colors
         c.isConnectable = False
         c.save()
+        return "received"
     @staticmethod
     def guess(connection_id, my_colors):
         c = connection()
@@ -77,6 +81,7 @@ class connection():
         self.id = 0
         self.isConnectable = True
         self.hasGuesser = None
+        self.isGuessable = False
         self.name = ""
         self.id_to_connect = 0
         self.isOver = False
@@ -99,6 +104,7 @@ class connection():
         self.id = my_id
         self.isConnectable = data_myid["isConnectable"]
         self.hasGuesser = data_myid["hasGuesser"]
+        self.isGuessable = data_myid["isGuessable"]
         self.name = data_myid["name"]
         self.id_to_connect = data_myid["id_to_connect"]
         self.isOver = data_myid["isOver"]
@@ -126,6 +132,7 @@ class connection():
         data[str(self.id)] = {
             "isConnectable":self.isConnectable,
             "hasGuesser":self.hasGuesser,
+            "isGuessable":self.isGuessable,
             "name":self.name,
             "id_to_connect":self.id_to_connect,
             "isOver":self.isOver,
