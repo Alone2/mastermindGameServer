@@ -52,19 +52,23 @@ class pins():
         c.get(connection_id)
         c.user_combinations.append(my_colors)
         c.user_tries += 1
-        c.save()
+        
+        correct = 0
+        correctC = 0
 
-        cor = {"correct":0, "correctColor":0}
-        """if gewonnen:
-            c.won = True
-            c.isOver = True
-            c.save()
-            return cor"""
-        if c.user_tries >= c.tries:
+        # TO-DO: TEST IF CORRECT
+
+        cor = {"correct":correct, "correctColor":correctC}
+
+        if correct >= len(my_colors):
+            #Chooser lost
             c.won = False
+            c.isOver = True
+        elif c.user_tries >= c.tries:
+            # Chooser won
+            c.won = True
             c.isOver = True  
-            c.save()
-            return cor  
+        c.save()
         return cor
 
 class connection():
@@ -75,7 +79,7 @@ class connection():
         self.name = ""
         self.id_to_connect = 0
         self.isOver = False
-        self.won = ""
+        self.won = None
         self.tries = 10
         self.user_tries = 0
         self.combination = []
