@@ -41,7 +41,8 @@ class pins():
     @staticmethod
     def save(connection_id, colors, tries):
         c = connection()
-        c.get(connection_id)
+        if not c.get(connection_id):
+            return "error"
         if c.isGuessable:
             return "error"
         c.isGuessable = True
@@ -53,7 +54,9 @@ class pins():
     @staticmethod
     def guess(connection_id, my_colors):
         c = connection()
-        c.get(connection_id)
+        if not c.get(connection_id):
+            return {"correct":"error", "correctColor":"error"}
+        
         c.user_combinations.append(my_colors)
         c.user_tries += 1
         
@@ -100,6 +103,8 @@ class connection():
         
     def get(self, my_id):
         data = filestuff.getJson(PATH)
+        if not str(my_id) in data:
+            return False
         data_myid = data[str(my_id)]
         self.id = my_id
         self.isConnectable = data_myid["isConnectable"]
@@ -114,12 +119,15 @@ class connection():
         self.combination = data_myid["combination"]
         self.user_combinations = data_myid["user_combinations"]
         self.correct_combinations = data_myid["correct_combinations"]
+
+        return True
     
     def newPlayer(self, id_to_connect, isGuesser):
         new_id = filestuff.getId(id_to_connect)
         if new_id == 0:
             return "error"
-        self.get(new_id)
+        if not self.get(new_id):
+            return "error"
         if self.isConnectable == False:
             return "error"
         if self.hasGuesser == isGuesser:

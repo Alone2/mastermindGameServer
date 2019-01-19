@@ -16,7 +16,8 @@ def main():
 
     c = mastermind.connection()
     c_id = int(arguments["connection_id"].value)
-    c.get(c_id)
+    if not c.get(c_id):
+        return "error"
     info = {"isOver":c.isOver,"won":c.won,"ready": not c.isConnectable, "user_combinations":c.user_combinations, "correct_combinations":c.correct_combinations}
 
     if c.isOver:
