@@ -2,6 +2,7 @@
 print("Content-type: text/html\n\n")
 import cgi
 import mastermind
+import json
 
 def main():
     arguments = cgi.FieldStorage()
@@ -23,7 +24,8 @@ def main():
     c.new(name, isGuesser)
     c.save()
 
-    return c.id
+    data = {"id":c.id}
+    return json.dumps(data)
 
 if __name__ == "__main__":
     # Beim Starten wird die Funktion main ausgeführt
