@@ -64,7 +64,7 @@ class pins():
         correctC = 0
 
         # TEST IF CORRECT
-        colors = my_colors.split("!")
+        colors = my_colors.split("$")
         secret_colors = c.combination
         isCorrect = []
 
