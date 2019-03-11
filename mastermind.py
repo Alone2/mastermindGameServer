@@ -145,7 +145,7 @@ class connection():
         new_id = filestuff.getId(id_to_connect)
         if new_id == 0:
             return "error"
-        if not self.get(new_id):
+        if not self.get(int(new_id)):
             return "error"
         if self.isConnectable == False:
             return "error"
