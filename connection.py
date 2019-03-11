@@ -17,7 +17,7 @@ def main():
         dat = c.newPlayer(c_id2c, isGuesser)
         c.save()
         data = {"id":dat, "info":arguments["info"].value}
-        return dat
+        return json.dumps(data)
     
     c = mastermind.connection()
     name = arguments["name"].value
