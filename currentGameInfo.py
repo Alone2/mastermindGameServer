@@ -12,7 +12,8 @@ def main():
         isGuesser = arguments["isGuesser"].value in ["True", "true", "1"]
 
         ids_to_connect = mastermind.filestuff.getIdsToConnect(isGuesser)
-        return json.dumps(ids_to_connect)
+        data = {"ids": ids_to_connect, "info":arguments["info"].value}
+        return json.dumps(data)
 
     c = mastermind.connection()
     c_id = int(arguments["connection_id"].value)
