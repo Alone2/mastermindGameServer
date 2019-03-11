@@ -63,7 +63,26 @@ class pins():
         correct = 0
         correctC = 0
 
-        # TO-DO: TEST IF CORRECT
+        # TEST IF CORRECT
+        colors = my_colors.split("!")
+        secret_colors = c.combination
+        isCorrect = []
+
+        for i in range(len(colors)):
+            isCorrect.append(False)
+            if colors[i] == secret_colors[i]:
+                correct +=1
+                isCorrect[i] = True
+
+        for i in range(len(colors)):
+            if isCorrect[i]:
+                continue
+            for j in range(len(colors)):
+                if isCorrect[j]:
+                    continue
+                if colors[i] == secret_colors[j]:
+                    correctC +1
+        # End
 
         cor = {"correct":correct, "correctColor":correctC}
         c.correct_combinations.append(cor)
