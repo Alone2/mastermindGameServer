@@ -2,6 +2,7 @@
 print("Content-type: text/html\n\n")
 import cgi
 import mastermind
+import json
 
 def main():
     arguments = cgi.FieldStorage()
@@ -12,7 +13,9 @@ def main():
     colors = arguments["colors"].value
     tries = int(arguments["tries"].value)
 
-    return mastermind.pins.save(c_id, colors, tries)
+    save = mastermind.pins.save(c_id, colors, tries)
+    data = {"action":save, "info":arguments["info"].value}
+    return json.dumps(data)
 
 if __name__ == "__main__":
     # Beim Starten wird die Funktion main ausgeführt

@@ -13,6 +13,7 @@ def main():
     colors = arguments["colors"].value
     guess = mastermind.pins.guess(c_id, colors)
 
+    guess["info"] =  arguments["info"].value
     return json.dumps(guess)
 
 if __name__ == "__main__":

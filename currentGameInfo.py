@@ -18,7 +18,7 @@ def main():
     c_id = int(arguments["connection_id"].value)
     if not c.get(c_id):
         return "error"
-    info = {"isOver":c.isOver,"won":c.won,"ready": not c.isConnectable, "user_combinations":c.user_combinations, "correct_combinations":c.correct_combinations}
+    info = {"info":arguments["info"].value,"isOver":c.isOver,"won":c.won,"ready": not c.isConnectable, "user_combinations":c.user_combinations, "correct_combinations":c.correct_combinations}
 
     if c.isOver:
         c.delete()

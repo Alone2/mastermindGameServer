@@ -24,7 +24,7 @@ def main():
     c.new(name, isGuesser)
     c.save()
 
-    data = {"id":c.id}
+    data = {"id":c.id, "info":arguments["info"].value}
     return json.dumps(data)
 
 if __name__ == "__main__":
