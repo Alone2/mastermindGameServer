@@ -16,6 +16,7 @@ def main():
         isGuesser = arguments["isGuesser"].value in ["True", "true", "1"]
         dat = c.newPlayer(c_id2c, isGuesser)
         c.save()
+        data = {"id":dat, "info":arguments["info"].value}
         return dat
     
     c = mastermind.connection()
