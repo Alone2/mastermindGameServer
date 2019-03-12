@@ -57,8 +57,7 @@ class pins():
         c = connection()
         if not c.get(connection_id):
             return {"correct":"error", "correctColor":"error"}
-        
-        c.user_combinations.append(my_colors)
+
         c.user_tries += 1
         
         correct = 0
@@ -66,6 +65,8 @@ class pins():
 
         # TEST IF CORRECT
         colors = my_colors.split("$")[1:]
+        c.user_combinations.append(colors)
+        
         secret_colors = c.combination
         isCorrect = []
 
