@@ -88,7 +88,7 @@ class pins():
         cor = {"correct":correct, "correctColor":correctC}
         c.correct_combinations.append(cor)
 
-        if correct >= len(my_colors):
+        if correct >= len(colors):
             #Chooser lost
             c.won = False
             c.isOver = True
