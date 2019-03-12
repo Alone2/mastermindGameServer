@@ -118,8 +118,8 @@ class connection():
     
     def new(self, name, isGuesser):
         self.name = name
-        self.id = self.__generateId(10, filestuff.getIds())
-        self.id_to_connect = self.__generateId(10, filestuff.getIdsToConnect(isGuesser))
+        self.id = self.__generateId(5, filestuff.getIds())
+        self.id_to_connect = self.__generateId(5, filestuff.getIdsToConnect(isGuesser))
         self.hasGuesser = isGuesser
         
     def get(self, my_id):
