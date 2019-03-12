@@ -47,7 +47,8 @@ class pins():
             return "error"
         c.isGuessable = True
         c.tries = tries
-        c.combination = colors
+        c.combination = colors.split("$")[1:]
+        c.numColors = len(colors.split("$")) - 1
         c.isConnectable = False
         c.save()
         return "received"
@@ -64,7 +65,7 @@ class pins():
         correctC = 0
 
         # TEST IF CORRECT
-        colors = my_colors.split("$")
+        colors = my_colors.split("$")[1:]
         secret_colors = c.combination
         isCorrect = []
 
@@ -113,6 +114,7 @@ class connection():
         self.combination = []
         self.user_combinations = []
         self.correct_combinations = []
+        self.numColors = 0
     
     def new(self, name, isGuesser):
         self.name = name
@@ -138,6 +140,7 @@ class connection():
         self.combination = data_myid["combination"]
         self.user_combinations = data_myid["user_combinations"]
         self.correct_combinations = data_myid["correct_combinations"]
+        self.numColors = data_myid["numColors"]
 
         return True
     
@@ -168,7 +171,8 @@ class connection():
             "combination":self.combination,
             "user_combinations":self.user_combinations,
             "user_tries":self.user_tries,
-            "correct_combinations":self.correct_combinations
+            "correct_combinations":self.correct_combinations,
+            "numColors":self.numColors
         }
         filestuff.saveJson(PATH, data)
 
