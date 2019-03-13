@@ -73,7 +73,7 @@ class pins():
         for i in range(len(colors)):
             isCorrect.append(False)
             if colors[i] == secret_colors[i]:
-                correct +=1
+                correct += 1
                 isCorrect[i] = True
 
         for i in range(len(colors)):
@@ -83,7 +83,7 @@ class pins():
                 if isCorrect[j]:
                     continue
                 if colors[i] == secret_colors[j]:
-                    correctC +1
+                    correctC += 1
         # End
 
         cor = {"correct":correct, "correctColor":correctC}
