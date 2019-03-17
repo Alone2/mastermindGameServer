@@ -84,6 +84,7 @@ class pins():
                     continue
                 if colors[i] == secret_colors[j]:
                     correctC += 1
+                    break
         # End
 
         cor = {"correct":correct, "correctColor":correctC}
