@@ -12,7 +12,14 @@ def main():
         isGuesser = arguments["isGuesser"].value in ["True", "true", "1"]
 
         ids_to_connect = mastermind.filestuff.getIdsToConnect(isGuesser)
-        finalData = {"ids": ids_to_connect, "info":arguments["info"].value}
+        id_and_name = []
+        for i in ids_to_connect:
+            c = mastermind.connection()
+            if not c.get(i):
+                id_and_name.append({"id":i,"name":"error"})
+                continue
+            id_and_name.append({"id":i,"name":c.name})   
+        finalData = {"ids": id_and_name, "info":arguments["info"].value}
         return json.dumps(finalData)
 
     c = mastermind.connection()
