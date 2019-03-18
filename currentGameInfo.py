@@ -15,7 +15,8 @@ def main():
         id_and_name = []
         for i in ids_to_connect:
             c = mastermind.connection()
-            if not c.get(i):
+            my_id = mastermind.filestuff.getId(i)
+            if not c.get(my_id):
                 id_and_name.append({"id":i,"name":"error"})
                 continue
             id_and_name.append({"id":i,"name":c.name})   
